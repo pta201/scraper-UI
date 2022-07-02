@@ -9,14 +9,21 @@ const ScrapePage = () => {
     totalPageNum: 1,
   });
   const [isFetching, setIsFetching] = useState(false);
-
+  const [isError, setIsError] = useState(false);
+  console.log(process.env.API_URL);
   const fetchProducts = async () => {
     setIsFetching(true);
-    const res = await axios.get(
-      `${process.env.API_URL}/api/v1/products/scrape/${data.shopName}/${data.totalPageNum}`
-    );
-    setProducts(res.data.data.products);
-    setIsFetching(false);
+    setIsError(false);
+    try {
+      const res = await axios.get(
+        `${process.env.API_URL}/api/v1/products/scrape/${data.shopName}/${data.totalPageNum}`
+      );
+      setProducts(res.data.data.products);
+      setIsFetching(false);
+    } catch (erro) {
+      setIsError(true);
+      setIsFetching(false);
+    }
   };
 
   return (
@@ -54,6 +61,7 @@ focus:text-gray-700 focus:bg-white focus:border-orange-600 focus:outline-none"
         </button>
       </div>
       {isFetching && <div className="text-lime-500">Đang load nè ...</div>}
+      {isError && <div className="text-red-500">Lỗi rồi 😢😭😭</div>}
       {/* Products */}
       {!isFetching && products && (
         <div className="container mx-auto">
