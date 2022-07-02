@@ -10,17 +10,15 @@ const ScrapePage = () => {
   });
   const [isFetching, setIsFetching] = useState(false);
   const [isError, setIsError] = useState(false);
-  console.log(process.env.API_URL);
   const fetchProducts = async () => {
     setIsFetching(true);
     setIsError(false);
     try {
-      const res = await axios.get(
-        `${process.env.API_URL}/api/v1/products/scrape/${data.shopName}/${data.totalPageNum}`
-      );
+      const url = `${process.env.API_URL}/api/v1/products/scrape/${data.shopName}/${data.totalPageNum}`;
+      const res = await axios.get(url);
       setProducts(res.data.data.products);
       setIsFetching(false);
-    } catch (erro) {
+    } catch (error) {
       setIsError(true);
       setIsFetching(false);
     }
