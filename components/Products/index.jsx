@@ -1,4 +1,4 @@
-import Row from "./row";
+import Row from "./Row";
 const Products = ({ products }) => {
   return (
     <>
