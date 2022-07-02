@@ -19,8 +19,8 @@ const Products = ({ products }) => {
                   key={product.itemId}
                   name={product.name}
                   imgSrc={product.image}
-                  minPrice={product.priceRange.priceMax}
-                  maxPrice={product.priceRange.priceMin}
+                  minPrice={product.priceRange.priceMin}
+                  maxPrice={product.priceRange.priceMax}
                   totalSales={product.totalSales}
                   salesPerMonth={product.salesPerMonth}
                 />

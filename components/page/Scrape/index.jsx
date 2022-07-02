@@ -18,7 +18,7 @@ const ScrapePage = () => {
       const apiURL = process.env.PTA201_URL;
       const url = `${apiURL}/api/v1/products/scrape/${data.shopName}/${data.totalPageNum}`;
       console.log(apiURL, url);
-      const res = await axios.get(url);
+      const res = await axios.get(url.at, {});
       console.log(res);
       setProducts(res.data.data.products);
       setIsFetching(false);
