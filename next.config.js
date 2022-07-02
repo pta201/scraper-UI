@@ -2,7 +2,7 @@
 const nextConfig = {
   reactStrictMode: true,
   env: {
-    API_URL: process.env.API_URL,
+    PTA201_URL: process.env.PTA201_URL,
   },
 };
 
