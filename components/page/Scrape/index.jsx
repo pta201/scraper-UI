@@ -1,7 +1,6 @@
 import axios from "axios";
 import { useState } from "react";
 import Products from "../../Products";
-
 const ScrapePage = () => {
   const [products, setProducts] = useState();
   const [data, setData] = useState({
@@ -13,9 +12,13 @@ const ScrapePage = () => {
   const fetchProducts = async () => {
     setIsFetching(true);
     setIsError(false);
+    // shopName: data.shopName,
+    // pageNumber: data.totalPageNum,
     try {
-      const url = `${process.env.API_URL}/api/v1/products/scrape/${data.shopName}/${data.totalPageNum}`;
+      const apiURL = process.env.API_URL;
+      const url = `${apiURL}/api/v1/products/scrape/${data.shopName}/${data.totalPageNum}`;
       const res = await axios.get(url);
+      console.log(res);
       setProducts(res.data.data.products);
       setIsFetching(false);
     } catch (error) {
