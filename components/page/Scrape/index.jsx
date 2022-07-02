@@ -13,7 +13,7 @@ const ScrapePage = () => {
   const fetchProducts = async () => {
     setIsFetching(true);
     const res = await axios.get(
-      `http://localhost:3000/api/v1/products/scrape/${data.shopName}/${data.totalPageNum}`
+      `${process.env.APP_URL}/api/v1/products/scrape/${data.shopName}/${data.totalPageNum}`
     );
     setProducts(res.data.data.products);
     setIsFetching(false);
